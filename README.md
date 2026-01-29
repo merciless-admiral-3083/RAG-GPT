@@ -405,7 +405,7 @@ Note: The code no longer exposes a separate `repetition_penalty` CLI parameter; 
 - **Name:** Jaspreet Nahal
 - **Email:** jaspreetnahal100@gmail.com
 - **Website:** https://tinyurl.com/jaspreetnahal
-                   100+ for detailed answers
+                   
 ```
 
 ---
