@@ -28,6 +28,6 @@ os.makedirs("data", exist_ok=True)
 np.save(output_path, encoded)
 
 
-print("✅ Encoding complete")
-print("📏 Total tokens:", len(encoded))
-print("📦 Saved to:", output_path)
+print("Encoding complete")
+print("Total tokens:", len(encoded))
+print("Saved to:", output_path)

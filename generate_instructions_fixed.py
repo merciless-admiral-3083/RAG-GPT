@@ -1,3 +1,5 @@
+#AI GEN FOR DIAGNOSIS
+# This script generates a JSON file with properly matched instruction samples for training.
 import json
 import random
 

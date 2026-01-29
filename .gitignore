@@ -18,3 +18,6 @@ __pycache__/
 
 # Large text corpora
 data/text_corpus.txt
+
+diagnose.py
+generate_instructions_fixed.py

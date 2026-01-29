@@ -103,19 +103,19 @@ print("📋 Recommendations:")
 print("="*60)
 
 if not found_models:
-    print("\n1️⃣  TRAIN BASE MODEL:")
+    print("\n1️ TRAIN BASE MODEL:")
     print("   python train.py --max_steps 2000 --device cpu")
     print("   (This will take 30-60 minutes)")
 
 elif not os.path.exists(chat_model_path):
-    print("\n1️⃣  CREATE CHAT MODEL:")
+    print("\n1️ CREATE CHAT MODEL:")
     latest_base = max(found_models, key=os.path.getmtime)
     print(f"   python instruction_train.py --base_model {latest_base} --out_dir log/main --device cpu")
     print("   (This will take 5-10 minutes)")
 
 else:
-    print("\n✅ Everything looks ready!")
-    print("\n💬 START CHATTING:")
+    print("\nEverything looks ready!")
+    print("\nSTART CHATTING:")
     print("   python chat_improved.py --model log/main/model_chat.pt --device cpu")
     print("\n   Or use original:")
     print("   python chat.py --model log/main/model_chat.pt --device cpu")
@@ -137,7 +137,7 @@ if os.path.exists("data/instruction_clean.json"):
             issues.append(f"Sample {i}: Q about recursion, A about stack")
     
     if issues:
-        print("\n⚠️  DATA QUALITY ISSUES DETECTED:")
+        print("\nDATA QUALITY ISSUE:")
         for issue in issues[:5]:
             print(f"   - {issue}")
         print("\n   FIX THIS FIRST:")

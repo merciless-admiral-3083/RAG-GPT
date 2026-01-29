@@ -18,5 +18,5 @@ os.makedirs("tokenizer", exist_ok=True)
 with open(vocab_path, "w", encoding="utf-8") as f:
     json.dump(vocab, f, ensure_ascii=False, indent=2)
 
-print("✅ Vocabulary built")
-print("📏 Vocab size:", len(vocab))
+print("Vocabulary built")
+print("Vocab size:", len(vocab))

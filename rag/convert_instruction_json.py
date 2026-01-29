@@ -26,7 +26,6 @@ for item in data:
     seen.add(text)
     chunks.append(text)
 
-# write in batches (keeps files readable)
 BATCH_SIZE = 200
 for i in range(0, len(chunks), BATCH_SIZE):
     batch = chunks[i:i+BATCH_SIZE]
@@ -34,4 +33,4 @@ for i in range(0, len(chunks), BATCH_SIZE):
     with open(os.path.join(OUTPUT_DIR, fname), "w", encoding="utf-8") as f:
         f.write("\n\n".join(batch))
 
-print(f"✅ Converted {len(chunks)} instruction outputs into RAG text files")
+print(f"Converted {len(chunks)} instruction outputs into RAG text files")

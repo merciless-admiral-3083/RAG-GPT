@@ -56,4 +56,4 @@ with open(os.path.join(INDEX_DIR, "data.json"), "w", encoding="utf-8") as f:
         indent=2
     )
 
-print("✅ RAG index built successfully")
+print("RAG index built successfully")

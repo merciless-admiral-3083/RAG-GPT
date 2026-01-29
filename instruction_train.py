@@ -5,9 +5,7 @@ import argparse
 import tiktoken
 from train import GPT, GPTConfig
 
-# -------------------------------
-# build instruction batch
-# -------------------------------
+
 def build_batch(enc, instruction, output, block_size):
     prompt = f"""### Instruction:
 {instruction}
@@ -39,9 +37,7 @@ def build_batch(enc, instruction, output, block_size):
     return x.unsqueeze(0), y_masked.unsqueeze(0)
 
 
-# -------------------------------
-# instruction fine-tuning
-# -------------------------------
+
 def instruction_finetune(args):
     device = torch.device(args.device)
     enc = tiktoken.get_encoding("gpt2")

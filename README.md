@@ -147,42 +147,41 @@ Implements a transformer-based GPT model from scratch:
 - Custom weight initialization scheme (NANOGPT_SCALE_INIT)
 
 ### 2. **chat.py** - Interactive Chat Interface
-Provides the main entry point for using the RAG system:
+`chat.py` is the interactive entrypoint that wires together the FAISS-based RAG retriever and the local GPT model. It implements a hybrid strategy that
+- attempts to answer from retrieved context first (RAG), and
+- falls back to constrained GPT generation when RAG confidence is low.
 
-**Components:**
-- Model loading and initialization
-- RAG retriever integration
-- Generation with advanced sampling:
-  - **Temperature**: Control randomness (default: 0.2 for deterministic outputs)
-  - **Top-K Filtering**: Only sample from top-k most likely tokens
-  - **Repetition Penalty**: Discourage repeated sequences
-  - **Early Stopping**: Limit generation length (default: 60 tokens)
+**Highlights (from the current implementation):**
+- Loads the fine-tuned chat model checkpoint (default: `log/main/model_chat.pt`) when available; otherwise runs in RAG-only mode.
+- Uses `tiktoken` GPT-2 encoding for prompt/token handling.
+- Applies a strict context validation and sentence-extraction pipeline to avoid low-quality context.
+- Hybrid decision logic: computes a RAG confidence score and decides between the RAG answer and GPT-generated answer.
 
-**Prompt Template:**
+**Minimal prompt used by `chat.py`:**
 ```
-You are a factual assistant.
-Answer ONLY using the context below.
-If the answer is not present, say:
-"I don't know based on the given context."
+Context: {context[:350]}
 
-### Context:
-{retrieved_context}
-
-### Question:
-{user_question}
-
-### Answer:
+Q: {question}
+A:
 ```
 
-**Command-line Arguments:**
+This implementation does not rely on an external `prompt_template` file or variable — the prompt is constructed inline as shown above.
+
+**Command-line Arguments (as implemented):**
 ```
---model           Path to model checkpoint (default: log/main/model_chat.pt)
---device          Device to run on (default: cpu)
---temperature     Sampling temperature (default: 0.2)
---top_k           Top-k filtering parameter (default: 10)
---max_tokens      Maximum tokens to generate (default: 60)
---repetition_penalty  Penalty for repeated tokens (default: 1.3)
+--model        Path to model checkpoint (default: log/main/model_chat.pt)
+--device       Device to run on (default: cpu)
+--temperature  Sampling temperature (default: 0.4)
+--top_k        Top-k filtering parameter for sampling (default: 50)
+--max_tokens   Maximum tokens to generate per query (default: 100)
+--rag_weight   RAG confidence weight threshold (default: 0.90)
+--debug        Enable debug prints
 ```
+
+**Runtime behavior notes:**
+- Retrieved documents are filtered by distance threshold and a context-quality check before joining into a single context.
+- The GPT generator uses top-k sampling, token-level repetition checks, and early stopping heuristics to avoid loops and low-quality outputs.
+- When updating docs or examples, prefer the compact prompt above rather than the older multi-line template.
 
 ### 3. **instruction_train.py** - Instruction Fine-tuning
 Specialized training script for adapting the model to follow instructions:
@@ -393,12 +392,19 @@ MAX_CHUNKS_RETURNED = 2         # Limit context length to prevent token overflow
 
 ### Generation Parameters (chat.py)
 ```
---temperature      0.1-0.3 for deterministic (factual)
-                   0.7-0.9 for creative
---top_k            5-20 for diverse outputs
-                   1-5 for focused outputs
---repetition_penalty 1.0-1.5 to discourage repetition
---max_tokens       30-100 for short answers
+--temperature      0.1-0.4 for factual/deterministic outputs
+--top_k            5-50 (higher = more sampling diversity; default in script: 50)
+--max_tokens       Maximum tokens to generate (tune to control response length; default: 100)
+--rag_weight       Confidence threshold to prefer RAG answer over GPT (0.85-0.95 recommended)
+```
+
+Note: The code no longer exposes a separate `repetition_penalty` CLI parameter; repetition and loop-prevention are enforced by internal heuristics in `chat.py`.
+
+**Contacts / Maintainer**
+
+- **Name:** Jaspreet Nahal
+- **Email:** jaspreetnahal100@gmail.com
+- **Website:** https://tinyurl.com/jaspreetnahal
                    100+ for detailed answers
 ```
 
