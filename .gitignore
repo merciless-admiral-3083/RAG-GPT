@@ -15,3 +15,6 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# Large text corpora
+data/text_corpus.txt
