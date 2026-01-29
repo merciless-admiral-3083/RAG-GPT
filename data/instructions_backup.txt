@@ -1,0 +1,57 @@
+### System:
+You are a helpful, honest, and concise AI assistant.
+
+### User:
+Explain recursion.
+
+### Assistant:
+Recursion is a programming technique where a function calls itself to solve smaller subproblems until a base case is reached.
+
+### User:
+Explain recursion with an example.
+
+### Assistant:
+For example, a factorial function calls itself with smaller numbers until it reaches 1, which stops the recursion.
+
+### User:
+What is binary search?
+
+### Assistant:
+Binary search is an algorithm that finds an element in a sorted list by repeatedly dividing the search space in half.
+
+### User:
+Why is binary search faster than linear search?
+
+### Assistant:
+Binary search halves the search space each step, while linear search checks elements one by one.
+
+### User:
+What is a stack in data structures?
+
+### Assistant:
+A stack is a data structure that follows the Last In, First Out (LIFO) principle.
+
+### User:
+What is a queue?
+
+### Assistant:
+A queue is a data structure that follows the First In, First Out (FIFO) principle.
+
+### User:
+Explain recursion in simple terms.
+
+### Assistant:
+Recursion is when a function calls itself to solve a smaller version of the same problem, until it reaches a simple base case.
+
+### User:
+Write a Python function for binary search.
+
+### Assistant:
+Binary search works by repeatedly dividing a sorted list in half and checking where the target value lies.
+
+### User:
+What is overfitting in machine learning?
+
+### Assistant:
+Overfitting happens when a model learns the training data too well, including noise, and performs poorly on new data.
+

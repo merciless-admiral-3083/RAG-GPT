@@ -1,0 +1,17 @@
+# Large data
+edu_fineweb10B/
+rag_data/
+rag_index/
+data/train.npy
+
+# Models
+model_chat/
+log/
+
+# Cache & temp
+.cache/
+__pycache__/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
