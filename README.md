@@ -73,47 +73,48 @@ Rather than relying solely on the language model's training data (which can lead
 ## 📁 Project Structure
 
 ```
-GPT_RAG/
-├── train.py                    # Core GPT model implementation
-├── chat.py                     # Interactive chat interface
-├── instruction_train.py        # Fine-tuning on instruction datasets
-├── fineweb.py                  # FineWeb-Edu dataset download & tokenization
-├── test_rag.py                 # RAG system testing
-├── diagnose.py                 # Diagnostic tools
-├── generate_instructions_fixed.py  # Instruction dataset generation
+GPT_RAG/ 🤖📚
+├── train.py 🏋️‍♂️                # Core GPT model implementation
+├── chat.py 💬                    # Interactive chat interface
+├── instruction_train.py 📘       # Fine-tuning on instruction datasets
+├── fineweb.py 🌐                 # FineWeb-Edu dataset download & tokenization
+├── test_rag.py 🧪                # RAG system testing
+├── diagnose.py 🩺                # Diagnostic tools
+├── generate_instructions_fixed.py 🛠️  # Instruction dataset generation
 │
-├── rag/                        # RAG System Module
-│   ├── config.py              # RAG configuration (thresholds, top-k, etc.)
-│   ├── rag_retriever.py       # Semantic retrieval implementation
-│   ├── build_rag_index.py     # FAISS index creation
-│   └── convert_instruction_json.py  # Format conversion utilities
+├── rag/ 🔎📦                     # RAG System Module
+│   ├── config.py ⚙️              # RAG configuration (thresholds, top-k, etc.)
+│   ├── rag_retriever.py 🧠       # Semantic retrieval implementation
+│   ├── build_rag_index.py 🏗️     # FAISS index creation
+│   └── convert_instruction_json.py 🔄  # Format conversion utilities
 │
-├── data/                       # Training Data
-│   ├── instruction_clean.json  # Cleaned instruction-response pairs
-│   ├── instructions.txt        # Raw instructions
-│   ├── text_corpus.txt         # Text corpus for knowledge base
-│   ├── train.npy               # Tokenized training data
-│   ├── raw/                    # Raw data files
-│   └── clean/                  # Cleaned data files
+├── data/ 📊                      # Training Data
+│   ├── instruction_clean.json 🧹  # Cleaned instruction-response pairs
+│   ├── instructions.txt 📝       # Raw instructions
+│   ├── text_corpus.txt 📖        # Text corpus for knowledge base
+│   ├── train.npy 🧮              # Tokenized training data
+│   ├── raw/ 🗂️                   # Raw data files
+│   └── clean/ ✨                  # Cleaned data files
 │
-├── edu_fineweb10B/             # FineWeb-Edu Dataset (10B tokens)
-│   ├── edufineweb_train_000001.npy  # Tokenized shards
-│   ├── edufineweb_train_000002.npy
-│   └── ... (57 total shards)
+├── edu_fineweb10B/ 🎓🌐           # FineWeb-Edu Dataset (10B tokens)
+│   ├── edufineweb_train_000001.npy 📦  # Tokenized shards
+│   ├── edufineweb_train_000002.npy 📦
+│   └── ... (57 total shards) 📚
 │
-├── rag_data/                   # RAG-specific data
-├── rag_index/                  # FAISS index & metadata
-│   ├── index.faiss             # Vector index
-│   └── data.json               # Document metadata
+├── rag_data/ 🧠📂                # RAG-specific data
+├── rag_index/ 📍                 # FAISS index & metadata
+│   ├── index.faiss 🧲            # Vector index
+│   └── data.json 🗃️              # Document metadata
 │
-├── log/                        # Model checkpoints & logs
-│   ├── config.json             # Training configuration
-│   └── model_chat.pt           # Fine-tuned chat model
+├── log/ 🪵                       # Model checkpoints & logs
+│   ├── config.json ⚙️            # Training configuration
+│   └── model_chat.pt 🤖💾         # Fine-tuned chat model
 │
-├── model_chat/                 # Chat model artifacts
-├── tokenizer/                  # GPT-2 tokenizer files
+├── model_chat/ 🤖✨               # Chat model artifacts
+├── tokenizer/ 🔤                 # GPT-2 tokenizer files
 │
-└── README.md                   # This file
+└── README.md 📘                  # This file
+
 ```
 
 ---
